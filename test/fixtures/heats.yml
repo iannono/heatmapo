@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  xpoint: 1.5
+  ypoint: 1.5
+
+two:
+  xpoint: 1.5
+  ypoint: 1.5
