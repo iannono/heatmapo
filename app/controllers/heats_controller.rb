@@ -1,3 +1,6 @@
+require 'net/http'
+require 'uri'
+
 class HeatsController < ApplicationController
 
   def create
@@ -7,7 +10,6 @@ class HeatsController < ApplicationController
 
   def index
     @heats = Heat.all
-    @page_content = "page_content"
   end
 
   private

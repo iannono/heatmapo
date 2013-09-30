@@ -1,2 +1,17 @@
-<h1>Heats#index</h1>
-<p>Find me in app/views/heats/index.html.erb</p>
+<div id="heat_el" style="width:960px; height: 720px;position:absolute;opacity:0.8;background: #eee;left:0px;top:0px;z-index:999;">
+</div>
+<script>
+  var config = {
+    "radius": 20,
+    "element": "heat_el",
+    "visible": true,
+    "opacity": 40,
+    "gradient": { 0.45: "rgb(0,0,255)", 0.55: "rgb(0,255,255)", 0.65: "rgb(0,255,0)", 0.95: "yellow", 1.0: "rgb(255,0,0)" }
+  };
+
+  var heatmap = heatmapFactory.create(config);
+  <% @heats.each do |heat| %>
+    heatmap.store.addDataPoint(<%= heat.xpoint %>, <%= heat.ypoint %>, 100)
+  <% end %>
+</script> 
+<iframe src="http://www.whst.gov.cn" style="width:960px; height: 720px;position:absolute;z-index:-1;"></iframe> 
