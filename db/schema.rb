@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130930024958) do
+ActiveRecord::Schema.define(version: 20131023025633) do
 
   create_table "heats", force: true do |t|
     t.float    "xpoint"
     t.float    "ypoint"
+    t.string   "screen_ratio"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

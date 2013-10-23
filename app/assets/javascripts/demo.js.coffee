@@ -14,6 +14,4 @@ jQuery ->
         false
       error: (data) ->
         console.log data
-        false
-
-
+        false 
