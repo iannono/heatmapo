@@ -1,5 +1,5 @@
         var page = require('webpage').create();
-        page.open("www.google.com", function(){
-          page.render('www_whst_gov_cn1.png');
+        page.open("http://www.baidu.com", function(){
+          page.render("public/heatimg/" + "www_baidu_com.png");
           phantom.exit();
-        }) 
+        }); 

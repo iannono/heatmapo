@@ -8,7 +8,7 @@ class HeatsController < ApplicationController
   def index
     @heats = Heat.all
     @skewing_x = 1002
-    generate_siteimg "www.google.com"
+    generate_siteimg "http://www.baidu.com"
   end
 
   private
@@ -18,19 +18,23 @@ class HeatsController < ApplicationController
 
   def generate_siteimg site_url
     generate_phantomjs site_url
-    IO.popen ("phantomjs "  + File.expand_path("../../../public/temp/site.js", __FILE__))
+    system("phantomjs "  + js_path)
   end
 
   def generate_phantomjs site_url
-    File.open(File.expand_path("../../../public/temp/site.js", __FILE__), "wb") do |file|
+    File.open(js_path, "wb") do |file|
       file.write(<<-EOF
         var page = require('webpage').create();
         page.open("#{site_url}", function(){
-          page.render('www_whst_gov_cn1.png');
+          page.render("public/heatimg/" + "www_baidu_com.png");
           phantom.exit();
-        }) 
+        }); 
       EOF
       )
     end
+  end
+
+  def js_path
+    File.expand_path("../../../public/temp/site.js", __FILE__)
   end
 end
