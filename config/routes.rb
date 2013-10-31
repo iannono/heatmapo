@@ -2,6 +2,8 @@ HeatmapDemo::Application.routes.draw do
   post "heats", to: "heats#create"
   get "heats/index"
   get "demo", to: "demo#index"
+
+  resources :sites
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

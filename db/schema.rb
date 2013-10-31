@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131031072957) do
+ActiveRecord::Schema.define(version: 20131031083027) do
 
   create_table "heats", force: true do |t|
     t.float    "xpoint"
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(version: 20131031072957) do
     t.string   "screen_ratio"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "site_id"
   end
+
+  add_index "heats", ["site_id"], name: "index_heats_on_site_id"
 
   create_table "sites", force: true do |t|
     t.string   "name"
