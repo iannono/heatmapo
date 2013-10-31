@@ -2,12 +2,30 @@ require 'spec_helper'
 
 describe SitesController do
 
-  describe "GET 'index'" do
-    it "returns http success" do
-      get 'index'
-      response.should be_success
+  describe "Get #show" do 
+    it "assigns the requested site to @site" do
+      site = create :site
+      get :show, id: site 
+      expect(assigns :site).to eq site
+    end
+
+    it "renders the :show template" do 
+      site = create :site
+      get :show, id: site 
+      expect(response).to render_template :show
     end
   end
+
+  describe "Get #index" do
+    it "assigns an array of sites to @sites" do
+      baidu = create(:site, name: "baidu", url: "http://www.baidu.com")
+      google = create(:site, name: "google", url: "http://www.google.com")
+
+      get :index
+      expect(assigns :sites).to eq [baidu, google]
+    end
+  end
+
 
   describe "GET 'create'" do
     it "returns http success" do

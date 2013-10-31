@@ -4,6 +4,7 @@ class SitesController < ApplicationController
   end
 
   def show
+    @site = Site.find params[:id]
   end
 
   def create
