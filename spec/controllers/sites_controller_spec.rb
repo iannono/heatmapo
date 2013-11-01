@@ -113,6 +113,44 @@ describe SitesController do
         expect(@site.name).to eq "baidu"
         expect(@site.url).to eq "http://www.baidu.com" 
       end
+
+      it "redirect to index path" do
+        patch :update, id: @site, site: attributes_for(:site)
+        expect(response).to redirect_to sites_path
+      end
+    end
+
+    context "with invalid attributes" do
+      it "does not change @site's attributes" do
+        patch :update, id: @site,
+          site: attributes_for(:site,
+                               name: "baidu", url: nil)
+
+        @site.reload
+        expect(@site.name).to_not eq "baidu"
+        expect(@site.name).to eq "tencent"
+      end
+
+      it "re-renders the :edit template" do
+        patch :update, id: @site, site: attributes_for(:invalid_site)
+      end
+    end
+  end
+
+  describe "Delete #destroy" do
+    before :each do
+      @site = create(:site)
+    end
+
+    it "delete the @site" do 
+      expect {
+        delete :destroy, id: @site
+      }.to change(Site, :count).by(-1)
+    end
+
+    it "redirect to index path" do
+      delete :destroy, id: @site
+      expect(response).to redirect_to sites_path
     end
   end
 end

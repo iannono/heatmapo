@@ -33,6 +33,8 @@ class SitesController < ApplicationController
   end
 
   def destroy
+    @site.destroy
+    redirect_to sites_path
   end 
 
 private
