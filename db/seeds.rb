@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Site.create(name: "whst.gov.cn", url: "http://www.whst.gov.cn", width: "1002", height: "700")
+Site.create(name: "whhd.gov.cn", url: "http://www.whhd.gov.cn", width: "1002", height: "700")

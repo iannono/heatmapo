@@ -1,0 +1,24 @@
+h1 Site Lists
+a.single-button.pure-button.pure-button-primary href="#{root_path}" ADD SITE
+
+- if @sites.any?
+  table.pure-table
+    thead: tr
+      th #
+      th site name
+      th stte url
+      th site with
+      th site height
+      th generate img
+      th edit
+      th delete
+    - @sites.each_with_index do |site, index|
+      tr
+        td.index = site.id
+        td.name = site.name
+        td.url = site.url
+        td.width = site.width
+        td.height = site.height
+        td: a.pure-button.pure-button-secondary href="#" generate
+        td: a.pure-button.pure-button-success href="#" edit site
+        td: a.pure-button.pure-button-error href="#" delete site 
