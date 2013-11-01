@@ -57,8 +57,62 @@ describe SitesController do
     end
   end 
 
-  describe "Post #create" do
-    before :each do
+  describe "Post #create" do 
+    context "with valid attributes" do
+      it "saves the new site in the database" do
+        expect{
+          post :create, site: attributes_for(
+            :site,
+            name: "qq",
+            url: "http://www.qq.com"
+          )
+        }.to change(Site, :count).by(1)
+      end
+
+      it "redirect to site#index" do
+        post :create, site: attributes_for(
+          :site,
+          name: "qq",
+          url: "http://www.qq.com"
+        ) 
+        expect(response).to redirect_to sites_path
+      end
+    end
+
+    context "with invalid attributes" do
+      it "does not save the new site in the database" do
+        expect{
+          post :create, site: attributes_for(:invalid_site)
+        }.to_not change(Site, :count) 
+      end
+
+      it "re-renders the :new template" do
+        post :create, site: attributes_for(:invalid_site)
+        expect(response).to render_template :new 
+      end
     end 
+  end 
+
+  describe "Patch #update" do
+    before :each do
+      @site = create :site, name: "tencent", url: "http://www.qq.com"
+    end
+
+    context "with valid attributes" do
+      it "located the requested @site" do
+        patch :update, id: @site, site: attributes_for(:site)
+        expect(assigns :site).to eq @site
+      end
+
+      it "changes @site's attributes" do
+        patch :update, id: @site,
+          site: attributes_for(:site,
+                               name: "baidu", url: "http://www.baidu.com")
+
+        @site.reload
+        expect(@site.name).to eq "baidu"
+        expect(@site.url).to eq "http://www.baidu.com" 
+      end
+    end
   end
 end
