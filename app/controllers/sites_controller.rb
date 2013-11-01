@@ -10,10 +10,15 @@ class SitesController < ApplicationController
   def create
   end
 
+  def edit
+    @site = Site.find params[:id]
+  end
+
   def update
   end
 
   def new
+    @site = Site.new
   end
 
   def destroy

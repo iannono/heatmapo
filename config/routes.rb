@@ -1,4 +1,5 @@
 HeatmapDemo::Application.routes.draw do
+  root 'sites#index'
   post "heats", to: "heats#create"
   get "heats/index"
   get "demo", to: "demo#index"

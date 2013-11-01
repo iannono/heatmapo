@@ -24,42 +24,41 @@ describe SitesController do
       get :index
       expect(assigns :sites).to eq [baidu, google]
     end
-  end
 
+    it "renders the :index template" do
+      get :index
+      expect(response).to render_template :index
+    end
+  end 
 
-  describe "GET 'create'" do
-    it "returns http success" do
-      get 'create'
-      response.should be_success
+  describe "Get #new" do
+    it "assigns a new site to @site" do
+      get :new
+      expect(assigns :site).to be_a_new(Site)
+    end
+
+    it "renders the :new template" do
+      get :new
+      expect(response).to render_template :new
     end
   end
 
-  #describe "GET 'update'" do
-  #  it "returns http success" do
-  #    put 'update', site: attributes_for(:site)
-  #    response.should be_success
-  #  end
-  #end
-
-  describe "GET 'new'" do
-    it "returns http success" do
-      get 'new'
-      response.should be_success
+  describe "Get #edit" do
+    it "assigns the requested site to @site" do
+      site = create(:site)
+      get :edit, id: site
+      expect(assigns :site).to eq site
     end
+
+    it "renders the :edit template" do
+      site = create(:site)
+      get :edit, id: site
+      expect(response).to render_template :edit
+    end
+  end 
+
+  describe "Post #create" do
+    before :each do
+    end 
   end
-
-  #describe "GET 'destroy'" do
-  #  it "returns http success" do
-  #    Delete 'destroy'
-  #    response.should be_success
-  #  end
-  #end
-
-  #describe "GET 'show'" do
-  #  it "returns http success" do
-  #    get 'show', site: create(:site)
-  #    response.should be_success
-  #  end
-  #end
-
 end
