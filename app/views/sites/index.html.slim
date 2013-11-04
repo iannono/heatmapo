@@ -1,5 +1,7 @@
 h1 Site Lists
-a.single-button.pure-button.pure-button-primary href="#{root_path}" ADD SITE
+
+= link_to "Add New Site", new_site_path,
+  class: "pure-button pure-button-emphasis"
 
 - if @sites.any?
   table.pure-table
@@ -19,6 +21,12 @@ a.single-button.pure-button.pure-button-primary href="#{root_path}" ADD SITE
         td.url = site.url
         td.width = site.width
         td.height = site.height
-        td: a.pure-button.pure-button-secondary href="#" generate
-        td: a.pure-button.pure-button-success href="#" edit site
-        td: a.pure-button.pure-button-error href="#" delete site 
+        td = link_to "generate img", generate_img_path(site), 
+              id: "generate_site_#{site.id}",
+              class: "pure-button pure-button-primary"
+        td = link_to "edit",edit_site_path(site), 
+              id: "edit_site_#{site.id}",
+              class: "pure-button pure-button-success"
+        td = link_to "delete",site_path(site), method: "DELETE",
+              id: "destroy_site_#{site.id}",
+              class: "pure-button pure-button-error"

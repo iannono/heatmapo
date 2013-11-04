@@ -1,0 +1,19 @@
+= form_for @site, html: {class: "pure-form pure-form-stacked"} do |f|
+  -if @site.errors.any?
+    #errorExplanation
+      h2 = pluralize @site.errors.count, "error"
+        | prohibited this site from being saved:
+      ul
+        - @site.errors.full_messages.each do |msg|
+          li = msg
+
+  fieldset
+    legend Site Porperites
+    = f.label :name, "SITE NAME"
+    = f.text_field :name, placehodler: "site name"
+
+    = f.label :url, "SITE URL"
+    = f.text_field :url, placehodler: "site url"
+
+    .pure-u-1-8 = f.submit "Submit", class: "pure-button pure-button-success"
+    .pure-u-1-8 = link_to "back to index", root_path, class: "pure-button"

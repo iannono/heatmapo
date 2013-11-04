@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131031083027) do
+ActiveRecord::Schema.define(version: 20131104030818) do
 
   create_table "heats", force: true do |t|
     t.float    "xpoint"
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20131031083027) do
   create_table "sites", force: true do |t|
     t.string   "name"
     t.string   "url"
-    t.string   "width"
-    t.string   "height"
+    t.integer  "width",      limit: 255, default: 0
+    t.integer  "height",     limit: 255, default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

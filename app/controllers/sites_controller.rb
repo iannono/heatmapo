@@ -1,5 +1,5 @@
 class SitesController < ApplicationController
-  before_action :find_site, only: [:show, :edit, :destroy, :update]
+  before_action :find_site, only: [:show, :edit, :destroy, :update, :generate_img]
 
   def index
     @sites = Site.all
@@ -36,6 +36,14 @@ class SitesController < ApplicationController
     @site.destroy
     redirect_to sites_path
   end 
+
+  def generate_img 
+    if @site.generate_img 
+      redirect_to sites_path, notice: "successfully generate the image!"
+    else
+      render :index, notice: "something wrong when generate the image!!"
+    end 
+  end
 
 private
   def find_site

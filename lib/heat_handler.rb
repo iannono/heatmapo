@@ -1,12 +1,14 @@
 module HeatHandler
 
   class << self 
+    # Used to generate the whole site's img by phantomJS
+    # return the size(array) of the generate img
+    #   #=> ["700", "450"]
     def handle_site_and_return_size site_url
       generate_site_img site_url
       size = img_size(get_name site_url)
     end
 
-    # width*height
     def img_size img_name
       img_properites = get_properites(img_name) 
       fetch_size(img_properites)
