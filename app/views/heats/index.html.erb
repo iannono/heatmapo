@@ -1,17 +1,19 @@
-<div id="heat_el" style="width:1002px; height: 1490px;position: absolute;opacity:0.8;background: #eee;left:0px;top:0px;z-index:999;">
-</div>
-<script>
-  var config = {
-    "radius": 12,
-    "element": "heat_el",
-    "visible": true,
-    "opacity": 40,
-    "gradient": { 0.45: "rgb(0,0,255)", 0.55: "rgb(0,255,255)", 0.65: "rgb(0,255,0)", 0.95: "yellow", 1.0: "rgb(255,0,0)" }
-  };
+.modal.fade#view_modal tabindex="-1" role="dialog" aria-labelledby="view_modal_label" aria-hidden="true" 
+  .modal-dialog 
+    .modal-content 
 
-  var heatmap = heatmapFactory.create(config);
-  <% @heats.each do |heat| %>
-    heatmap.store.addDataPoint(<%= heat.xpoint - (heat.screen_ratio.split('*')[1].to_i - 1002) %>, <%= heat.ypoint %>, 50)
-  <% end %>
-</script> 
-<img src="/heatimg/www_whst_gov_cn.png" style="width:1002px; height: 1490px;position:absolute;left:0px;top:0px;z-index:-1;"></img> 
+      .modal-header 
+        button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+        h4.modal-title#view_modal_label
+      .modal-body style="width: #{site.width}px;"
+        div id="heat_el" style="width: #{site.width}px; height: #{site.height}px; \
+          position: absolute; opacity: 0.8; background: #eee; left: 0px; top: 0px; \
+          z-index: 99999;"
+
+        img src="/heatimg/www_whst_gov_cn.png" style="width: #{site.width}px; \
+          height: #{site.height}px; position: absolute; left: 0px; top: 0px; \
+          z-index: -1;"
+
+      .modal-footer
+        button.pure-button type="button" data-dismiss="modal" Close
+        button.pure-button.pure-button-primary Save changes

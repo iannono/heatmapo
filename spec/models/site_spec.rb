@@ -32,4 +32,17 @@ describe Site do
     expect(site).to have(1).errors_on(:url) 
   end
 
+  it "does change the site's width and height" do
+    site = create :site, width: 0, height: 0
+
+    expect(HeatHandler).to receive(:handle_site_and_return_size)
+                            .with(site.url)
+                            .and_return(["700", "455"])
+
+    site.reload
+    expect(site.generate_img).to eq true
+    expect(site.width).to eq 700
+    expect(site.height).to eq 455
+  end
+
 end

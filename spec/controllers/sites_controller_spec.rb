@@ -153,4 +153,15 @@ describe SitesController do
       expect(response).to redirect_to sites_path
     end
   end
+
+  describe "Get #generate_img" do 
+    it "redirect to sites's path" do
+      site = create :site, width: 0, height: 0 
+      allow(site).to receive(:generate_img)
+                      .and_return(true) 
+
+      get :generate_img, id: site 
+      expect(response).to redirect_to sites_path
+    end
+  end
 end

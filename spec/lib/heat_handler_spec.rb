@@ -7,6 +7,8 @@ describe HeatHandler do
 
   it "can get name from site url" do
     expect(HeatHandler.get_name url).to eq "www.baidu.com.png"
+    expect(HeatHandler.get_name "http://www.whst.gov.cn").to eq "www.whst.gov.cn.png"
+    expect(HeatHandler.get_name "www.whst.gov.cn").to eq "www.whst.gov.cn.png"
   end
 
   it "can get properites from img file" do

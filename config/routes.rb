@@ -1,9 +1,8 @@
 HeatmapDemo::Application.routes.draw do
   root 'sites#index'
-  post "heats", to: "heats#create"
   get "heats/index"
-  get "demo", to: "demo#index"
   get "sites/:id/generate_img", to: "sites#generate_img", as: :generate_img
+  get "sites/:id/view", to: "sites#view", as: :view
 
   resources :sites
 

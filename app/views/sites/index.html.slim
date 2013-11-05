@@ -3,6 +3,13 @@ h1 Site Lists
 = link_to "Add New Site", new_site_path,
   class: "pure-button pure-button-emphasis"
 
+.pure-u-1.alert.alert-dismissable
+
+.pure-g
+  .pure-u-1-2.progress.progress-striped.active
+    .progress-bar role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"
+      span.sr-only generating......
+
 - if @sites.any?
   table.pure-table
     thead: tr
@@ -11,7 +18,8 @@ h1 Site Lists
       th stte url
       th site with
       th site height
-      th generate img
+      th generate
+      th view
       th edit
       th delete
     - @sites.each_with_index do |site, index|
@@ -21,12 +29,18 @@ h1 Site Lists
         td.url = site.url
         td.width = site.width
         td.height = site.height
-        td = link_to "generate img", generate_img_path(site), 
+        td.generate = link_to "generate img", generate_img_path(site), 
               id: "generate_site_#{site.id}",
               class: "pure-button pure-button-primary"
-        td = link_to "edit",edit_site_path(site), 
+        td = link_to "view", view_path(site),
+              remote: true,
+              id: "view_iste_#{site.id}",
+              class: "pure-button pure-button-secondary"
+        td = link_to "edit", edit_site_path(site), 
               id: "edit_site_#{site.id}",
               class: "pure-button pure-button-success"
-        td = link_to "delete",site_path(site), method: "DELETE",
+        td = link_to "delete", site_path(site), method: "DELETE",
               id: "destroy_site_#{site.id}",
               class: "pure-button pure-button-error"
+
+#site_view            

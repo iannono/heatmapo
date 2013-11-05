@@ -1,5 +1,5 @@
 class SitesController < ApplicationController
-  before_action :find_site, only: [:show, :edit, :destroy, :update, :generate_img]
+  before_action :find_site, only: [:show, :edit, :destroy, :update, :generate_img, :view]
 
   def index
     @sites = Site.all
@@ -38,11 +38,25 @@ class SitesController < ApplicationController
   end 
 
   def generate_img 
-    if @site.generate_img 
-      redirect_to sites_path, notice: "successfully generate the image!"
-    else
-      render :index, notice: "something wrong when generate the image!!"
-    end 
+    respond_to do |format|
+      if @site.generate_img 
+        format.html { 
+          redirect_to sites_path, notice: "successfully generate the image!"
+        }
+        format.json { render json: { :success => true, status: 200 } }
+      else
+        format.html { 
+          render :index, notice: "something wrong when generate the image!!"
+        }
+        format.js
+      end 
+    end
+  end
+
+  def view
+    respond_to do |format|
+      format.js
+    end
   end
 
 private
