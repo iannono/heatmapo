@@ -1,4 +1,5 @@
-$("body").append("<%= j render("site_view", { site: @site }) %>")
+$("#site_view").html("")
+$("#site_view").html("<%= j render("site_view", { site: @site }) %>")
 
 var config = {
   "radius": 12,
@@ -12,3 +13,5 @@ var heatmap = heatmapFactory.create(config);
 <% @site.heats.each do |heat| %>
   heatmap.store.addDataPoint(<%= heat.xpoint - (heat.screen_ratio.split('*')[1].to_i - 1002) %>, <%= heat.ypoint %>, 50)
 <% end %> 
+
+$("#site_view").show()

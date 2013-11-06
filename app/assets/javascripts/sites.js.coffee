@@ -23,3 +23,7 @@ jQuery ->
         $(that).text("generate img").removeClass("pure-button-disabled")
       error: ->
     false
+
+  $("body").keydown (event) ->
+    if event.keyCode == 27
+      $("#site_view").hide()

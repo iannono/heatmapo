@@ -71,4 +71,18 @@ feature "Site management" do
     expect(site.width).to eq 700
     expect(site.height).to eq 455
   end
+
+  scenario "view site's heatmap" do
+    site = create :site, name: "www.doesnotexsit.com",
+                  url: "http://www.doesnotexsit.com" 
+    visit root_path 
+
+    allow(HeatHandler).to receive(:handle_site_and_return_size)
+                      .with(site.url)
+                      .and_return(["700", "455"]) 
+    click_link "view_site_#{site.id}" 
+
+    expect(page).to have_content(site.name + "'s heat map'") 
+    expect(page).to have_content("Download Img")
+  end
 end
