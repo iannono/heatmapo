@@ -14,4 +14,8 @@ class Site < ActiveRecord::Base
       true
     end 
   end
+
+  def img_name
+    ::HeatHandler.get_name url
+  end
 end
