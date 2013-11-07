@@ -16,10 +16,10 @@ def import_heats site, file_path
   end
 end
 
-import_heats whst, "db/import_data/kejiju.csv"
-import_heats whhd, "db/import_data/gongshangju.csv"
-import_heats wuchang, "db/import_data/wuchang.csv"
-import_heats whcsq, "db/import_data/chengshiquan.csv"
-import_heats hongshan, "db/import_data/hongshan.csv"
-import_heats yichang, "db/import_data/yichang.csv"
-import_heats hbzf, "db/import_data/gongjijing.csv"
+#import_heats whst, "db/import_data/kejiju.csv"
+#import_heats whhd, "db/import_data/gongshangju.csv"
+#import_heats wuchang, "db/import_data/wuchang.csv"
+#import_heats whcsq, "db/import_data/chengshiquan.csv"
+#import_heats hongshan, "db/import_data/hongshan.csv"
+#import_heats yichang, "db/import_data/yichang.csv"
+#import_heats hbzf, "db/import_data/gongjijing.csv"
