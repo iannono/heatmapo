@@ -20,13 +20,8 @@ module HeatHandler
       $1 + ".png"
     end
 
-    def get_properites img_name
-      r, w = IO.pipe
-      system("file public/heatimg/#{img_name}", :out => w)
-      w.close
-      img_properites = r.read 
-      r.close 
-
+    def get_properites img_name 
+      img_properites = `file public/heatimg/#{img_name}` 
       img_properites.strip
     end
 
