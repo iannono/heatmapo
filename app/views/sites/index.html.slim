@@ -1,4 +1,4 @@
-h1 Site Lists
+h1 SITE LIST
 
 = link_to "Add New Site", new_site_path,
   class: "pure-button pure-button-emphasis"
@@ -15,9 +15,8 @@ h1 Site Lists
     thead: tr
       th #
       th site name
-      th stte url
-      th site with
-      th site height
+      th width
+      th height
       th generate
       th view
       th edit
@@ -25,8 +24,7 @@ h1 Site Lists
     - @sites.each_with_index do |site, index|
       tr
         td.index = site.id
-        td.name = site.name
-        td.url = site.url
+        td.name = link_to site.name, site.url, title: site.url, target: "_blank"
         td.width = site.width
         td.height = site.height
         td.generate = link_to "generate img", generate_img_path(site), 
