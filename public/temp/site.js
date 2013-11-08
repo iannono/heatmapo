@@ -1,5 +1,5 @@
           var page = require('webpage').create();
-          page.open("http://www.douban.com", function(){
-            page.render("public/heatimg/" + "www.douban.com.png");
+          page.open("http://www.yichang.gov.cn/index.html", function(){
+            page.render("public/heatimg/" + "www.yichang.gov.cn/index.html.png");
             phantom.exit();
           }); 

@@ -27,3 +27,8 @@ jQuery ->
   $("body").keydown (event) ->
     if event.keyCode == 27
       $("#site_view").hide()
+
+
+$(document).on "page:load", ->
+  $(".progress").hide()
+  $(".alert").hide()
