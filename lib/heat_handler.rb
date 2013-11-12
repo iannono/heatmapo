@@ -1,16 +1,12 @@
 module HeatHandler
 
   class << self 
-    def generate_heatpoint_img site_url 
-      size = handle_site_and_return_size site_url
-
-    end
     # Used to generate the whole site's img by phantomJS
     # return the size(array) of the generate img
     #   #=> ["700", "450"]
     def handle_site_and_return_size site_url
       generate_site_img site_url
-      size = img_size(get_name site_url)
+      size = img_size(img_name site_url, ".png")
     end
 
     def img_size img_name
@@ -18,9 +14,13 @@ module HeatHandler
       fetch_size(img_properites)
     end 
 
-    def get_name site_url 
+    def img_name site_url, suffix
+      (fetch_site_name site_url) << suffix
+    end
+
+    def fetch_site_name site_url
       site_url =~ /(\w{3}\.\S+\.\w+)/
-      $1 + ".png"
+      $1
     end
 
     def get_properites img_name 
@@ -42,15 +42,14 @@ module HeatHandler
     def generate_heats_img site_url
       generate_heats_img_js site_url
       system("phantomjs "  + js_path("heats_img.js")) 
-    end
-
+    end 
     
     def generate_site_img_js site_url
       File.open(js_path("site_img.js"), "w") do |file|
         file.write(<<-EOF
           var page = require('webpage').create();
           page.open("#{site_url}", function(){
-            page.render("public/heatimg/" + "#{get_name(site_url)}");
+            page.render("public/heatimg/" + "#{img_name(site_url, ".png")}");
             phantom.exit();
           }); 
         EOF
@@ -62,8 +61,8 @@ module HeatHandler
       File.open(js_path("heats_img.js"), "w") do |file|
         file.write(<<-EOF
           var page = require('webpage').create();
-          page.open("lib/site_heat_generator.html", function(){
-            page.render("public/heatimg/" + "#{get_name(site_url)}");
+          page.open("#{site_url}", function(){
+            page.render("public/heatimg/" + "#{img_name(site_url, ".heats.png")}");
             phantom.exit();
           }); 
         EOF

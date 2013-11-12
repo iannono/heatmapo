@@ -1,4 +1,3 @@
-require 'lib/heat_handler'
 require 'spec_helper'
 
 feature "Site management" do
@@ -82,7 +81,6 @@ feature "Site management" do
                       .and_return(["700", "455"]) 
     click_link "view_site_#{site.id}" 
 
-    expect(page).to have_content(site.name + "'s heat map'") 
-    expect(page).to have_content("Download Img")
+    expect(page).to have_selector "#view_frame"
   end
 end

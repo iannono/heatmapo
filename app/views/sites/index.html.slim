@@ -7,8 +7,7 @@ h1 SITE LIST
 
 .pure-g
   .pure-u-1-2.progress.progress-striped.active
-    .progress-bar role="progressbar" aria-valuenow="80" \
-      aria-valuemin="0" aria-valuemax="100" style="width: 80%"
+    .progress-bar role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"
       span.sr-only generating......
 
 - if @sites.any?
@@ -33,7 +32,7 @@ h1 SITE LIST
               class: "pure-button pure-button-primary"
         td = link_to "view", view_path(site),
               remote: true,
-              id: "view_iste_#{site.id}",
+              id: "view_site_#{site.id}",
               class: "pure-button pure-button-secondary"
         td = link_to "edit", edit_site_path(site), 
               id: "edit_site_#{site.id}",

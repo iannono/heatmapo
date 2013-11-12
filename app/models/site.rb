@@ -16,6 +16,6 @@ class Site < ActiveRecord::Base
   end
 
   def img_name
-    ::HeatHandler.get_name url
+    ::HeatHandler.img_name url, ".png"
   end
 end

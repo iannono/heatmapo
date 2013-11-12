@@ -3,6 +3,7 @@ HeatmapDemo::Application.routes.draw do
   get "heats/index"
   get "sites/:id/generate_img", to: "sites#generate_img", as: :generate_img
   get "sites/:id/view", to: "sites#view", as: :view
+  get "sites/:id/bare_view", to: "sites#bare_view", as: :bare_view
 
   resources :sites
 

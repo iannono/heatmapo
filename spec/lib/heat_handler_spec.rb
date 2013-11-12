@@ -5,9 +5,9 @@ describe HeatHandler do
   let(:url) { "http://www.baidu.com" }
 
   it "gets name from site url" do
-    expect(HeatHandler.get_name url).to eq "www.baidu.com.png"
-    expect(HeatHandler.get_name "http://www.whst.gov.cn").to eq "www.whst.gov.cn.png"
-    expect(HeatHandler.get_name "www.whst.gov.cn").to eq "www.whst.gov.cn.png"
+    expect(HeatHandler.img_name url, ".png").to eq "www.baidu.com.png"
+    expect(HeatHandler.img_name "http://www.whst.gov.cn", ".png").to eq "www.whst.gov.cn.png"
+    expect(HeatHandler.img_name "www.whst.gov.cn", ".png").to eq "www.whst.gov.cn.png"
   end
 
   it "generate site img js" do
@@ -27,10 +27,11 @@ describe HeatHandler do
   end
 
   it "generate heats img" do
-    #HeatHandler.generate_heats_img url
-    #expect(File.file? "public/heatimg/www.baidu.com.heats.png").to eq true
-    #File.delete "public/heatimg/www.baidu.com.png"
-  end
+    site = create(:site, url: url)
+    HeatHandler.generate_heats_img site.url
+    expect(File.file? "public/heatimg/www.baidu.com.heats.png").to eq true
+    File.delete "public/heatimg/www.baidu.com.heats.png"
+  end 
 
   it "gets properites from img file" do
     HeatHandler.generate_site_img url
@@ -45,13 +46,5 @@ describe HeatHandler do
   it "fetches size from site url" do
     expect(HeatHandler.handle_site_and_return_size url).to eq ["720", "455"]
   end
-
-  it "generate site img by site_url"
-  it "generate site img with heatpoint" do
-    site = create(:site, url: url)
-    HeatHandler.generate_heatpoint_img site.url
-    expect(File.file? "public/heatimg/www.baidu.com.heats.png")
-  end
-  it "add heatpoint to site img and return the new img"
 
 end

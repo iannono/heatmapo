@@ -1,5 +1,5 @@
 class SitesController < ApplicationController
-  before_action :find_site, only: [:show, :edit, :destroy, :update, :generate_img, :view]
+  before_action :find_site, only: [:show, :edit, :destroy, :update, :generate_img, :view, :bare_view]
 
   def index
     @sites = Site.all
@@ -56,6 +56,13 @@ class SitesController < ApplicationController
   def view
     respond_to do |format|
       format.js
+      format.html
+    end
+  end
+
+  def bare_view
+    respond_to do |format|
+      format.html { render action: "view", layout: "bare_heat_img_layout" }
     end
   end
 
