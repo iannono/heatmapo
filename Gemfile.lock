@@ -26,6 +26,8 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.5)
+    annotate (2.5.0)
+      rake
     arel (4.0.1)
     atomic (1.1.14)
     better_errors (1.0.1)
@@ -157,6 +159,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   better_errors
   capybara (~> 2.1.0)
   coffee-rails (~> 4.0.0)
