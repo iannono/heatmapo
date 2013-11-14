@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: sites
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  url        :string(255)
+#  width      :integer          default(0)
+#  height     :integer          default(0)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'spec_helper'
 
 describe Site do
@@ -30,6 +43,16 @@ describe Site do
     create(:site, url: "http://www.baidu.com")
     site = build(:site, url: "http://www.baidu.com")
     expect(site).to have(1).errors_on(:url) 
+  end
+
+  it "get img_name with png" do
+    site = build(:site, url: "http://www.baidu.com/index.html")
+    expect(site.img_name).to eq ("www.baidu.com.png")
+  end
+
+  it "get correct site_name" do
+    site = build(:site, url: "http://www.baidu.com/index.html")
+    expect(site.site_name).to eq ("www.baidu.com")
   end
 
   it "does change the site's width and height" do

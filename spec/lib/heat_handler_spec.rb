@@ -8,7 +8,8 @@ describe HeatHandler do
     expect(HeatHandler.fetch_site_name url).to eq "www.baidu.com"
     expect(HeatHandler.fetch_site_name "http://www.whst.gov.cn").to eq "www.whst.gov.cn"
     expect(HeatHandler.fetch_site_name "www.whst.gov.cn").to eq "www.whst.gov.cn"
-  end
+    expect(HeatHandler.fetch_site_name "http://www.baidu.com/another/index.html").to eq "www.baidu.com"
+  end 
 
   it "generate site img js" do
     HeatHandler.generate_site_img_js url, "www.baidu.com"

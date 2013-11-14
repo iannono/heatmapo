@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: sites
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  url        :string(255)
+#  width      :integer          default(0)
+#  height     :integer          default(0)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Site < ActiveRecord::Base
   validates_presence_of :width, :height, :name, :url
   validates_uniqueness_of :url
@@ -22,6 +35,6 @@ class Site < ActiveRecord::Base
   end
 
   def img_name
-    ::HeatHandler.fetch_site_name url + ".png"
+    (::HeatHandler.fetch_site_name url) + ".png"
   end
 end

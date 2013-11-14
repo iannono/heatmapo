@@ -15,9 +15,9 @@ module HeatHandler
     end 
 
     def fetch_site_name site_url
-      site_url =~ /(\w{3}\.\S+\.\w+)/
+      site_url =~ /(\w{3}\.\S+\.(cn|com|net))/
       $1
-    end
+    end 
 
     def get_properites img_name 
       img_properites = `file public/heatimg/#{img_name}` 
