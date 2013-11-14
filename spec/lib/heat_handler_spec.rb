@@ -36,4 +36,10 @@ describe HeatHandler do
     expect(HeatHandler.handle_site_and_return_size url, "www.baidu.com").to eq ["720", "455"]
   end
 
+  it "generate site img with heat point" do
+    HeatHandler.handle_site_and_return_size "http://localhost:3000/sites/3/bare_view", "bare_view"
+    
+    expect(File.file? "public/heatimg/bare_view.png").to eq true
+  end
+
 end

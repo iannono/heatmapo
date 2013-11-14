@@ -6,7 +6,7 @@ module HeatHandler
     #   #=> ["700", "450"]
     def handle_site_and_return_size site_url, img_name
       generate_site_img site_url, img_name
-      size = img_size(img_name << ".png")
+      size = img_size(img_name << ".png") 
     end
 
     def img_size img_name

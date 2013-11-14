@@ -38,6 +38,7 @@ group :development, :test do
   gem 'meta_request'
   gem "rspec-rails", "~> 2.14.0"
   gem "factory_girl_rails", "~> 4.2.1"
+  gem "puma"
 end
 gem "annotate"
 

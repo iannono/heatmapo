@@ -61,7 +61,7 @@ feature "Site management" do
     visit root_path
 
     allow(HeatHandler).to receive(:handle_site_and_return_size)
-                      .with(site.url)
+                      .with(site.url, site.site_name)
                       .and_return(["700", "455"])
 
     click_link "generate_site_#{site.id}" 
@@ -77,7 +77,7 @@ feature "Site management" do
     visit root_path 
 
     allow(HeatHandler).to receive(:handle_site_and_return_size)
-                      .with(site.url)
+                      .with(site.url, "sample")
                       .and_return(["700", "455"]) 
     click_link "view_site_#{site.id}" 
 

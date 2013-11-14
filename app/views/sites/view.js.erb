@@ -1,17 +1,4 @@
 $("#site_view").html("")
-$("#site_view").html("<%= j render("site_view", { site: @site }) %>")
-
-var config = {
-  "radius": 12,
-  "element": "heat_el",
-  "visible": true,
-  "opacity": 40,
-  "gradient": { 0.45: "rgb(0,0,255)", 0.55: "rgb(0,255,255)", 0.65: "rgb(0,255,0)", 0.95: "yellow", 1.0: "rgb(255,0,0)" }
-};
-
-var heatmap = heatmapFactory.create(config);
-<% @site.heats.each do |heat| %>
-  heatmap.store.addDataPoint(<%= heat.xpoint - (heat.screen_ratio.split('*')[1].to_i - @site.width)/2 %>, <%= heat.ypoint %>, 50)
-<% end %> 
+$("#site_view").html("<%= j render("site_view", { site: @site }) %>") 
 
 $("#site_view").show()
