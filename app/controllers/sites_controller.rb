@@ -61,6 +61,7 @@ class SitesController < ApplicationController
   end
 
   def bare_view
+    @heats = @site.heats.order("id desc").first(5000)
     respond_to do |format|
       format.html { render layout: "bare_heat_img_layout" }
     end

@@ -10,7 +10,7 @@ var config = {
 };
 
 var heatmap = heatmapFactory.create(config);
-<% @site.heats.each do |heat| %>
+<% @heats.each do |heat| %>
   heatmap.store.addDataPoint(<%= heat.xpoint - (heat.screen_ratio.split('*')[0].to_i - @site.width)/2 %>, <%= heat.ypoint %>, 50)
 <% end %> 
 </script> 
