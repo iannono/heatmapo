@@ -27,6 +27,7 @@ class Site < ActiveRecord::Base
     self.height = height.to_i
     self.save
     ::HeatHandler.handle_site_and_return_size bare_view_url, self.site_name 
+    true
   end 
 
   def site_name

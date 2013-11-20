@@ -20,7 +20,7 @@ module HeatHandler
     end 
 
     def get_properites img_name 
-      img_properites = `file public/heatimg/#{img_name}` 
+      img_properites = `file #{render_path}/heatimg/#{img_name}` 
       img_properites.strip
     end
 
@@ -33,7 +33,7 @@ module HeatHandler
     def generate_site_img site_url, img_name 
       js_name = img_name + ".js"
       generate_site_img_js site_url, img_name
-      system("phantomjs "  + js_path(js_name)) 
+      `phantomjs #{render_path}/temp/#{js_name}`
     end 
     
     def generate_site_img_js site_url, img_name
@@ -41,7 +41,7 @@ module HeatHandler
         file.write(<<-EOF
           var page = require('webpage').create();
           page.open("#{site_url}", function(){
-            page.render("public/heatimg/" + "#{img_name + ".png"}");
+            page.render("#{render_path}/heatimg/" + "#{img_name + ".png"}");
             phantom.exit();
           }); 
         EOF
@@ -52,5 +52,9 @@ module HeatHandler
     def js_path name
       File.expand_path("../../public/temp/#{name}", __FILE__)
     end 
+
+    def render_path
+      "/home/rails/heatmap/public/"
+    end
   end
 end
