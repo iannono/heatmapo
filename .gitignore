@@ -17,3 +17,5 @@
 /public/heatimg
 /db/import_data
 /public/temp
+/config/unicorn.rb
+/config/nginx.unicorn.conf

@@ -39,7 +39,7 @@ class SitesController < ApplicationController
 
   def generate_img 
     respond_to do |format|
-      if @site.generate_img bare_view_path(@site)
+      if @site.generate_img bare_view_url(@site)
         format.html { 
           redirect_to sites_path, notice: "successfully generate the image!"
         }

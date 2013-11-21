@@ -54,7 +54,7 @@ module HeatHandler
     end 
 
     def render_path
-      "/home/rails/heatmap/public/"
+      "/home/ian/work/heatmapo/public"
     end
   end
 end
