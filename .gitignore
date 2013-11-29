@@ -19,3 +19,4 @@
 /public/temp
 /config/unicorn.rb
 /config/nginx.unicorn.conf
+/config/database.yml

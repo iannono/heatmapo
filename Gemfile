@@ -50,3 +50,4 @@ group :test do
 end
 
 gem 'unicorn'
+gem 'capistrano'
