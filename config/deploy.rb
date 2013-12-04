@@ -1,14 +1,15 @@
-set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :application, 'heatmap'
+set :repo_url, 'git@github.com:xiongbo/heatmapo.git'
+set :branch, 'v0.1'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
-# set :deploy_to, '/var/www/my_app'
-# set :scm, :git
+set :deploy_to, '/home/deploy/heatmap'
+set :scm, :git
 
-# set :format, :pretty
-# set :log_level, :debug
-# set :pty, true
+set :format, :pretty
+set :log_level, :info
+set :pty, true
 
 # set :linked_files, %w{config/database.yml}
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
