@@ -35,14 +35,21 @@ module HeatHandler
       generate_site_img_js site_url, img_name
       `phantomjs #{render_path}/temp/#{js_name}`
     end 
+
     
     def generate_site_img_js site_url, img_name
       File.open(js_path(img_name + ".js"), "w") do |file|
         file.write(<<-EOF
           var page = require('webpage').create();
-          page.open("#{site_url}", function(){
-            page.render("#{render_path}/heatimg/" + "#{img_name + ".png"}");
-            phantom.exit();
+          page.open("#{site_url}", function(){ 
+            page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", function(){
+              page.evaluate(function(){
+                $("#topmenu1").mouseover();
+                console.log($("#topmenu1").html());
+              });
+              page.render("#{render_path}/heatimg/" + "#{img_name + ".png"}");
+              phantom.exit();
+            });
           }); 
         EOF
         )

@@ -50,4 +50,5 @@ group :test do
 end
 
 gem 'unicorn'
-gem 'capistrano'
+gem 'capistrano', '~> 3.0.1'
+gem 'capistrano-rails', '~> 1.1.0'
